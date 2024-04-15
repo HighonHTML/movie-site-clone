@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import Box from "./assets/Box.jsx";
 import MovieList from "./assets/MovieList.jsx";
@@ -80,6 +80,7 @@ function App() {
         setError("");
         return;
       }
+      handleCloseMovie();
       fetchMovies();
       return function () {
         controller.abort();
@@ -141,6 +142,21 @@ function Logo() {
   );
 }
 function Search({ query, setQuery }) {
+
+  const inputEl = useRef(null);
+
+  useEffect(function () {
+    function callback(e) {
+      if (document.activeElement === inputEl.current) return;
+      if (e.code === "Enter") {
+        inputEl.current.focus();
+        setQuery("");
+      }
+    }
+    document.addEventListener("keydown", callback);
+    return () => document.removeEventListener("keydown", callback);
+  }, [setQuery]);
+
   return (
     <input
       className="search"
@@ -150,6 +166,7 @@ function Search({ query, setQuery }) {
       onChange={(e) => {
         setQuery(e.target.value);
       }}
+      ref={inputEl}
     />
   );
 }
