@@ -61,13 +61,28 @@ export default function MovieDetails({
 
   useEffect(
     function () {
-      if(!title) return
+      if (!title) return;
       document.title = `movie | ${title}`;
-      return function(){
-        document.title = 'usePopcorn'
-      }
+      return function () {
+        document.title = "usePopcorn";
+      };
     },
     [title]
+  );
+
+  useEffect(
+    function () {
+      function callback(e) {
+        if (e.code === "Escape") {
+          onCloseMovie();
+        }
+      }
+      document.addEventListener("keydown", callback);
+      return function () {
+        document.removeEventListener("keydown", callback);
+      };
+    },
+    [onCloseMovie]
   );
 
   return (

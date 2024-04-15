@@ -55,7 +55,7 @@ function App() {
             throw new TypeError("movie not found");
           }
           setMovies(data.Search);
-          setError('')
+          setError("");
         } catch (err) {
           if (err.name !== "AbortError") {
             setError(err.message);
