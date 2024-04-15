@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+
 const containerstyle = {
   display: "flex",
   alignItems: "center",
@@ -30,21 +31,26 @@ export default function StarRating({
   defaultRating = 0,
   onSetRating,
 }) {
+
   const [rating, setRating] = useState(defaultRating);
   const [tempRating, setTempRating] = useState(0);
+
   const lineStyle = {
     lineHeight: "1",
     margin: "0",
     color,
     fontSize: `${size / 1.5}px`,
   };
+
   function handleRating(rating) {
     setRating(rating);
     onSetRating(rating);
   }
+
   function handleTempRating(rating) {
     setTempRating(rating);
   }
+
   return (
     <div style={containerstyle} className={className}>
       <div style={starContainerStyle}>
@@ -70,12 +76,14 @@ export default function StarRating({
 }
 
 function Star({ onRate, full, onHoverIn, onHoverOut, color, size }) {
+  
   const starStyle = {
     width: `${size}px`,
     height: `${size}px`,
     display: "block",
     cursor: "pointer",
   };
+  
   return (
     <span
       style={starStyle}

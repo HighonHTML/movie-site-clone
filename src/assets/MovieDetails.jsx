@@ -9,13 +9,16 @@ export default function MovieDetails({
   onAddWatched,
   watched,
 }) {
+
+  const [movie, setMovie] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [userRating, setUserRating] = useState(null);
+
   const isWatched = watched.map((movie) => movie.imdbID).includes(selectedId);
   const watchedUserRating = watched.find(
     (movie) => movie.imdbID == selectedId
   )?.userRating;
-  const [movie, setMovie] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
-  const [userRating, setUserRating] = useState(null);
+
   const {
     Title: title,
     Year: year,
@@ -82,7 +85,7 @@ export default function MovieDetails({
         document.removeEventListener("keydown", callback);
       };
     },
-    [onCloseMovie]
+    [onCloseMovie] 
   );
 
   return (

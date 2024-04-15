@@ -133,6 +133,7 @@ function App() {
 function NavBar({ children }) {
   return <nav className="nav-bar">{children}</nav>;
 }
+
 function Logo() {
   return (
     <div className="logo">
@@ -141,21 +142,24 @@ function Logo() {
     </div>
   );
 }
-function Search({ query, setQuery }) {
 
+function Search({ query, setQuery }) {
   const inputEl = useRef(null);
 
-  useEffect(function () {
-    function callback(e) {
-      if (document.activeElement === inputEl.current) return;
-      if (e.code === "Enter") {
-        inputEl.current.focus();
-        setQuery("");
+  useEffect(
+    function () {
+      function callback(e) {
+        if (document.activeElement === inputEl.current) return;
+        if (e.code === "Enter") {
+          inputEl.current.focus();
+          setQuery("");
+        }
       }
-    }
-    document.addEventListener("keydown", callback);
-    return () => document.removeEventListener("keydown", callback);
-  }, [setQuery]);
+      document.addEventListener("keydown", callback);
+      return () => document.removeEventListener("keydown", callback);
+    },
+    [setQuery]
+  );
 
   return (
     <input
@@ -170,6 +174,7 @@ function Search({ query, setQuery }) {
     />
   );
 }
+
 function NumResults({ movies }) {
   return (
     <p className="num-results">
@@ -177,6 +182,7 @@ function NumResults({ movies }) {
     </p>
   );
 }
+
 function Main({ children }) {
   return <main className="main">{children}</main>;
 }

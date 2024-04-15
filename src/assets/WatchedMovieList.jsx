@@ -13,6 +13,7 @@ export default function WatchedMovieList({ watched, onDeleteWatched }) {
     </ul>
   );
 }
+
 function WatchedMovie({ movie, onDeleteWatched }) {
   return (
     <li>

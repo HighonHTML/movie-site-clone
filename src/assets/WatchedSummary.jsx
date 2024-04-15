@@ -1,5 +1,6 @@
 import average from "./average";
 export default function WatchedSummary({ watched }) {
+
   const condition = watched.length > 0;
   const averageImdbRating = condition
     ? average(watched.map((movie) => movie.imdbRating))
@@ -10,6 +11,7 @@ export default function WatchedSummary({ watched }) {
   const averageRunTime = condition
     ? average(watched.map((movie) => movie.runtime))
     : 0;
+    
   return (
     <div className="summary">
       <h2>Movies you watched</h2>

@@ -1,4 +1,4 @@
-const tempMovieData = [
+export const tempMovieData = [
   {
     imdbID: "tt1375666",
     Title: "Inception",
@@ -21,6 +21,7 @@ const tempMovieData = [
       "https://m.media-amazon.com/images/M/MV5BYWZjMjk3ZTItODQ2ZC00NTY5LWE0ZDYtZTI3MjcwN2Q5NTVkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_SX300.jpg",
   },
 ];
+
 export const tempWatchedData = [
   {
     imdbID: "tt1375666",
@@ -44,6 +45,6 @@ export const tempWatchedData = [
   },
 ];
 
-export const KEY = "45b85158";
+// OMBd API Key
 
-// export { KEY, tempMovieData, tempWatchedData };
+export const KEY = "45b85158";
