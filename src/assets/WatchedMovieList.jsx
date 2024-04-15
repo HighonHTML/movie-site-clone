@@ -5,7 +5,7 @@ export default function WatchedMovieList({ watched, onDeleteWatched }) {
         return (
           <WatchedMovie
             movie={movie}
-            key={movie}
+            key={movie.imdbID}
             onDeleteWatched={onDeleteWatched}
           />
         );
