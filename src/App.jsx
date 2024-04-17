@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 
-import Box from "./assets/Box.jsx";
-import MovieList from "./assets/MovieList.jsx";
-import MovieDetails from "./assets/MovieDetails.jsx";
-import WatchedSummary from "./assets/WatchedSummary.jsx";
-import WatchedMovieList from "./assets/WatchedMovieList.jsx";
+import Box from "./components/Box.jsx";
+import MovieList from "./components/MovieList.jsx";
+import MovieDetails from "./components/MovieDetails.jsx";
+import WatchedSummary from "./components/WatchedSummary.jsx";
+import WatchedMovieList from "./components/WatchedMovieList.jsx";
 
-import Error from "./assets/Error.jsx";
-import Loader from "./assets/Loader.jsx";
+import Error from "./components/Error.jsx";
+import Loader from "./components/Loader.jsx";
 
 import { useMovies } from "./hooks/useMovies.js";
 import { useLocalStorageState } from "./hooks/useLocalStorageState.js";

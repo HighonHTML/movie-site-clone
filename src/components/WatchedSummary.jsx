@@ -1,4 +1,4 @@
-import average from "./average";
+import average from "../utils/average";
 export default function WatchedSummary({ watched }) {
 
   const condition = watched.length > 0;

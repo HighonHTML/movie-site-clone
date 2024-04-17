@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { KEY } from "../assets/data";
+import { KEY } from "../utils/data";
 export function useMovies(query) {
 
   const [movies, setMovies] = useState([]);
