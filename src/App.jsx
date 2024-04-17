@@ -9,16 +9,18 @@ import WatchedMovieList from "./assets/WatchedMovieList.jsx";
 import Error from "./assets/Error.jsx";
 import Loader from "./assets/Loader.jsx";
 
-import { useMovies } from "./assets/useMovies.jsx";
+import { useMovies } from "./hooks/useMovies.js";
+import { useLocalStorageState } from "./hooks/useLocalStorageState.js";
 
 function App() {
 
-
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState();
-  const [watched, setWatched] = useState(function () {
-    return JSON.parse(localStorage.getItem("watched"));
-  });
+  // const [watched, setWatched] = useState(function () {
+  //   return JSON.parse(localStorage.getItem("watched"));
+  // });
+
+  const [watched, setWatched] = useLocalStorageState([], 'watched')
 
   function handleMovieSelect(id) {
     setSelectedId((selectedId) => (selectedId === id ? null : id));
@@ -39,12 +41,12 @@ function App() {
 
   const { movies, isLoading, error } = useMovies(query);
 
-  useEffect(
-    function () {
-      localStorage.setItem("watched", JSON.stringify(watched));
-    },
-    [watched]
-  );
+  // useEffect(
+  //   function () {
+  //     localStorage.setItem("watched", JSON.stringify(watched));
+  //   },
+  //   [watched]
+  // );
 
   return (
     <>
