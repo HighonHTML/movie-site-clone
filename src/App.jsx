@@ -11,16 +11,14 @@ import Loader from "./assets/Loader.jsx";
 
 import { useMovies } from "./hooks/useMovies.js";
 import { useLocalStorageState } from "./hooks/useLocalStorageState.js";
+import { useKey } from "./hooks/useKey.js";
 
 function App() {
 
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState();
-  // const [watched, setWatched] = useState(function () {
-  //   return JSON.parse(localStorage.getItem("watched"));
-  // });
 
-  const [watched, setWatched] = useLocalStorageState([], 'watched')
+  const [watched, setWatched] = useLocalStorageState([], "watched");
 
   function handleMovieSelect(id) {
     setSelectedId((selectedId) => (selectedId === id ? null : id));
@@ -32,7 +30,6 @@ function App() {
 
   function handleAddWatched(movie) {
     setWatched((watched) => [...watched, movie]);
-    // localStorage.setItem('watched', JSON.stringify([...watched, movie]))
   }
 
   function handleDeleteWatched(id) {
@@ -40,13 +37,6 @@ function App() {
   }
 
   const { movies, isLoading, error } = useMovies(query);
-
-  // useEffect(
-  //   function () {
-  //     localStorage.setItem("watched", JSON.stringify(watched));
-  //   },
-  //   [watched]
-  // );
 
   return (
     <>
@@ -105,20 +95,11 @@ function Logo() {
 function Search({ query, setQuery }) {
   const inputEl = useRef(null);
 
-  useEffect(
-    function () {
-      function callback(e) {
-        if (document.activeElement === inputEl.current) return;
-        if (e.code === "Enter") {
-          inputEl.current.focus();
-          setQuery("");
-        }
-      }
-      document.addEventListener("keydown", callback);
-      return () => document.removeEventListener("keydown", callback);
-    },
-    [setQuery]
-  );
+  useKey("Enter", function () {
+    if (document.activeElement === inputEl.current) return;
+    inputEl.current.focus();
+    setQuery("");
+  });
 
   return (
     <input
